@@ -1,0 +1,44 @@
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #1a2980, #26d0ce);
+    color: #ffffff;
+}
+h2{
+    margin-top: 20px;
+}
+.weather-container, .crypto-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.weather-card, .crypto-card{
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 1px;
+    background: rgba(255,255,255,0.1);
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+}
+
+.news{
+    display: grid;
+    place-items: center;
+    height: auto;
+}
+
+a{
+    color: #8417cd;
+    text-decoration: none;
+}
+a:visited{
+    color: #ffd700;
+}
+a:hover{
+    color: #ffffff;
+    text-decoration: underline;
+}
+a:active{
+    color: #ffd700;
+}

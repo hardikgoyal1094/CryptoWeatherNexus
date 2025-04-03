@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Dashboard</h1>
+
+  <!-- Weather Section -->
+  <h2>Weather</h2>
+  <div class="weather-container">
+    <% weather.forEach(city => { %>
+      <div class="weather-card">
+        <h3><%= city.city %></h3>
+        <p>Temperature: <%= city.temp %>°C</p>
+        <p>Humidity: <%= city.humidity %>%</p>
+        <p>Condition: <%= city.condition %></p>
+        <a href="/weather?city=<%= city.city %>">More details</a>
+      </div>
+    <% }) %>
+  </div>
+
+<!-- Cryptocurrency Section -->
+  <h2>Cryptocurrency</h2>
+  <div class="crypto-container">
+    <% crypto.forEach(coin => { %>
+      <div class="crypto-card">
+        <h3><%= coin.name.toUpperCase() %></h3>
+        <p>Price: $<%= coin.price %></p>
+        <p>Market Cap: $<%= (coin.marketCap / 1e9).toFixed(2) %>B</p>
+        <p>24h Change: <%= coin.change24h %>%</p>
+        <a href="/crypto?coin=<%= coin.name %>">More details</a>
+      </div>
+    <% }) %>
+  </div>
+
+  <!-- News Section -->
+   <div class="news">
+    <h2>Crypto News</h2>
+  <ul>
+    <% news.forEach(article => { %>
+      <li><a href="<%= article.url %>" target="_blank"><%= article.title %></a></li>
+    <% }) %>
+  </ul>
+   </div>
+  
+</body>
+</html>
