@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= weather.city %> Weather Details</title>
-    <link rel="stylesheet" href="/style.css"></link>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= weather.city %> Weather Details</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+
+    img {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
-<div class="card">
+<body>
+  <div class="card">
     <h1>Weather in <%= weather.city %>, <%= weather.country %></h1>
     <img src="<%= weather.icon %>" alt="weather icon" style="width: 80px; height: 80px;">
     <p><span>Temperature:</span> <%= weather.temperature %>°C</p>
@@ -15,7 +48,6 @@
     <p><span>Pressure:</span> <%= weather.pressure %> hPa</p>
     <p><span>Wind Speed:</span> <%= weather.windSpeed %> m/s</p>
     <p><span>Condition:</span> <%= weather.condition %></p>
-</div>
-<body>
+  </div>
 </body>
 </html>
