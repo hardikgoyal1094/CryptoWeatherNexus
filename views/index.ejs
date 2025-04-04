@@ -14,7 +14,7 @@
   <div class="weather-container">
     <% weather.forEach(city => { %>
       <div class="weather-card">
-        <h3><%= city.city %></h3>
+        <h2><%= city.city %></h2>
         <p>Temperature: <%= city.temp %>°C</p>
         <p>Humidity: <%= city.humidity %>%</p>
         <p>Condition: <%= city.condition %></p>
@@ -28,7 +28,7 @@
   <div class="crypto-container">
     <% crypto.forEach(coin => { %>
       <div class="crypto-card">
-        <h3><%= coin.name.toUpperCase() %></h3>
+        <h2><%= coin.name.toUpperCase() %></h2>
         <p>Price: $<%= coin.price %></p>
         <p>Market Cap: $<%= (coin.marketCap / 1e9).toFixed(2) %>B</p>
         <p>24h Change: <%= coin.change24h %>%</p>

@@ -6,6 +6,7 @@ body{
 }
 h2{
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 .weather-container, .crypto-container{
     display: flex;
@@ -13,14 +14,27 @@ h2{
     gap: 20px;
 }
 
-.weather-card, .crypto-card{
+.weather-card, .crypto-card {
+    width: 220px;           /* fixed width */
+    height: 220px;          /* fixed height */
     padding: 20px;
-    background: #f9f9f9;
-    border-radius: 1px;
-    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
     backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* evenly space out content */
+    box-sizing: border-box;
+    text-align: center;
 }
+.weather-card p,
+.crypto-card p {
+    font-size: 0.9rem;
+    margin: 2px 0;        /* reduce space between lines */
+    line-height: 1.2;     /* tighten line spacing */
+}
+
 
 .news{
     display: grid;
@@ -51,4 +65,8 @@ a:active{
     background: rgba(255,255,255,0.1);
     color: #ffffff;
     backdrop-filter: blur(10px);
+}
+
+h3{
+    margin: 10px;
 }
