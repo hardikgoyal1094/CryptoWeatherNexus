@@ -57,7 +57,11 @@ app.get("/crypto", async(req, res)=>{
     const{ coin } = req.query;
     if(!coin) return res.redirect("/");
     try{
-        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coin}`);
+        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coin}`, {
+            headers: {
+                'User-Agent': 'Dashboard/1.0'
+            }
+        });
         const data = response.data;
 
         const cryptoDetails={
