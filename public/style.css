@@ -42,3 +42,13 @@ a:hover{
 a:active{
     color: #ffd700;
 }
+
+.card{
+    padding: 20px;
+    width: fit-content;
+    background: #f9f9f9;
+    border-radius: 1px;
+    background: rgba(255,255,255,0.1);
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+}

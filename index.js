@@ -53,4 +53,68 @@ app.get("/", async (req, res) => {
 });
 
 
+app.get("/crypto", async(req, res)=>{
+    const{ coin } = req.query;
+    if(!coin) return res.redirect("/");
+    try{
+        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coin}`);
+        const data = response.data;
+
+        const cryptoDetails={
+            name: data.name,
+            symbol: data.symbol.toUpperCase(),
+            price: data.market_data.current_price.usd,
+            marketCap: data.market_data.market_cap.usd,
+            volume: data.market_data.total_volume.usd,
+            high24h: data.market_data.high_24h.usd,
+            low24h: data.market_data.low_24h.usd,
+        };
+        const historyResponse = await axios.get(
+            `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=7&interval=daily`
+        );
+        const priceHistory = historyResponse.data.prices.map(p => ({
+            date: new Date(p[0]).toLocaleDateString(),
+            price: p[1]
+        }));
+
+        res.render("crypto", {crypto: cryptoDetails, history: priceHistory});
+        console.log(cryptoDetails);
+    } catch(error){
+        console.error("Error fetching crypto details: ", error.message);
+        res.redirect("/");
+    }
+})
+
+
+app.get("/weather", async (req, res) => {
+    const { city } = req.query;
+    if (!city) return res.redirect("/");
+
+    try {
+        const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&units=metric`
+        );
+
+        const data = response.data;
+
+        const weatherDetails = {
+            city: data.name,
+            country: data.sys.country,
+            temperature: data.main.temp,
+            feelsLike: data.main.feels_like,
+            humidity: data.main.humidity,
+            pressure: data.main.pressure,
+            windSpeed: data.wind.speed,
+            condition: data.weather[0].description,
+            icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        };
+
+        res.render("weather", { weather: weatherDetails });
+        console.log(weatherDetails);
+    } catch (error) {
+        console.error("Error fetching weather details: ", error.message);
+        res.redirect("/");
+    }
+});
+
 app.listen(port, () => console.log(`Server is listening at port: ${port}`));

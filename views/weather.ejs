@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= weather.city %> Weather Details</title>
+    <link rel="stylesheet" href="/style.css"></link>
+</head>
+<div class="card">
+    <h1>Weather in <%= weather.city %>, <%= weather.country %></h1>
+    <img src="<%= weather.icon %>" alt="weather icon" style="width: 80px; height: 80px;">
+    <p><span>Temperature:</span> <%= weather.temperature %>°C</p>
+    <p><span>Feels Like:</span> <%= weather.feelsLike %>°C</p>
+    <p><span>Humidity:</span> <%= weather.humidity %>%</p>
+    <p><span>Pressure:</span> <%= weather.pressure %> hPa</p>
+    <p><span>Wind Speed:</span> <%= weather.windSpeed %> m/s</p>
+    <p><span>Condition:</span> <%= weather.condition %></p>
+</div>
+<body>
+</body>
+</html>
